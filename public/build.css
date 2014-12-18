@@ -1,0 +1,51 @@
+.grid {
+    width 100%;
+}
+
+.col {
+    float: left;
+}
+
+.col_count_3 {
+    width: 33%;
+}
+
+.col_count_10 {
+    width: 1%;
+}
+
+.current__value {
+    text-align: center;
+    font-size: 64pt;
+}
+
+.all__value {
+    line-height: 24pt;
+    font-size: 18pt;
+    text-align: center;
+}
+
+.bar {
+    height: 100px;
+    position: relative;
+}
+
+.bar__content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 0px;
+}
+
+.bar__data {
+    position: absolute;
+    top: 100%;
+    width: 300%;
+
+    display: none;
+}
+
+.bar:hover .bar__data {
+    display: block;
+}

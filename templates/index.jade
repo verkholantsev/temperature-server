@@ -1,0 +1,37 @@
+doctype html
+html(lang="en")
+    head
+        title Temperature server
+        link(rel="stylesheet" href="build.css")
+    body
+        h1 Temperature data
+
+        h2 Current
+        .current.grid
+            .current__value.col.col_count_3
+                span= locals.current.voltage
+                span V
+            .current__value.col.col_count_3
+                span= locals.current.resistance
+                span &Omega;
+            .current__value.col.col_count_3
+                span= locals.current.temperature
+                span &deg;C
+
+        h2 All data
+        .all.grid
+            each row in locals.data
+                .all__value.col.col_count_10
+                    .bar
+                        .bar__content(style="height: #{row.barHeight * 100}px; background-color: rgba(0, 0, 0, #{row.barHeight})")
+                        .bar__data
+                            div
+                                = row.voltage
+                                span V
+                            div
+                                = row.resistance
+                                span &Omega;
+                            div
+                                = row.temperature
+                                span &deg;C
+
