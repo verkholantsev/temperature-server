@@ -1,0 +1,15 @@
+.all.grid
+    each row in locals.data
+        .all__value.col.col_count_10
+            .bar
+                .bar__content(style="height: #{row.barHeight * 100}px; background-color: rgba(0, 0, 0, #{row.barHeight})")
+                .bar__data
+                    div
+                        = row.voltage
+                        span V
+                    div
+                        = row.resistance
+                        span &Omega;
+                    div
+                        = row.temperature
+                        span &deg;C

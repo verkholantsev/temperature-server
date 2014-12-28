@@ -17,6 +17,8 @@
     "gulp-jade": "0.10.0",
     "mysql": "2.5.3",
     "node-mysql": "0.4.1",
-    "recluster": "0.3.7"
+    "recluster": "0.3.7",
+    "socket.io": "1.2.1",
+    "sticky-session": "0.1.0"
   }
 }

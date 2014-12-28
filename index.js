@@ -1,10 +1,45 @@
-/* jshint node: true */
+var PORT = process.env.PORT || 8080;
+var WORKERS_COUNT = process.env.WORKERS || 4;
 
-'use strict';
+var http = require('http');
+var express = require('express');
+var bodyParser = require('body-parser');
 
-var recluster = require('recluster');
-var path = require('path');
+var socketio = require('socket.io');
 
-var cluster = recluster(path.join(__dirname, './server.js'));
+var mysql = require('mysql');
+var db = mysql.createConnection({
+    host: 'localhost',
+    user: 'arduino',
+    password: '',
+    database: 'arduino'
+});
 
-cluster.run();
+db.connect(function (err) {
+    if (err) {
+        console.error(err);
+    }
+
+    var app = express();
+
+    app.use(express.static(__dirname + '/public'));
+    app.use(bodyParser.json());
+
+    app.post('/data', require('./controllers/data')(db, io));
+    app.get('/', require('./controllers/index')(db));
+
+    var server = http.createServer(app);
+    var io = socketio(server);
+
+    var sticky = require('sticky-session');
+
+    sticky(WORKERS_COUNT, server).listen(PORT, function () {
+        console.log('[%s] Server listening at %s', process.pid, PORT);
+    });
+
+    io.on('connection', function () {
+        console.log('[%s] User connected', process.pid);
+    });
+
+});
+

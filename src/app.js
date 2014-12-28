@@ -1,5 +1,8 @@
-var index = require('../templates/index');
+var socket = io();
+var current = require('../templates/current');
+var all = require('../templates/all');
 
-var data = {current: {}, data: []};
-
-console.log(index(data));
+socket.on('data', function (data) {
+    $('.current').replaceWith(current(data));
+    $('.all').replaceWith(all(data));
+});
