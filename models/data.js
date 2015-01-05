@@ -17,8 +17,5 @@ module.exports = function (rawData) {
         };
     });
 
-    return {
-        data: data,
-        current: data[0]
-    };
+    return data;
 };

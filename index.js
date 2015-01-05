@@ -22,14 +22,14 @@ db.connect(function (err) {
 
     var app = express();
 
+    var server = http.createServer(app);
+    var io = socketio(server);
+
     app.use(express.static(__dirname + '/public'));
     app.use(bodyParser.json());
 
     app.post('/data', require('./controllers/data')(db, io));
     app.get('/', require('./controllers/index')(db));
-
-    var server = http.createServer(app);
-    var io = socketio(server);
 
     var sticky = require('sticky-session');
 

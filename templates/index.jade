@@ -1,13 +1,8 @@
 extends ./page.jade
 
+block data
+    script.
+        var data = !{JSON.stringify(locals)};
+
 block title
     title Temperature server
-
-block content
-    h1 Temperature data
-
-    h2 Current
-        include ./current.jade
-
-    h2 All data
-        include ./all.jade
