@@ -3,16 +3,17 @@
 /* globals React */
 
 var socket = io();
-var Current = require('./Current');
-var All = require('./All');
 
-var dispatcher = require('./dispatcher');
+import Current from './Current';
+import All from './All';
+import dispatcher from './dispatcher';
+
 dispatcher.dispatch({action: 'update', data: data});
 
 var App = React.createClass({
-    render: function () {
+    render() {
         return (
-            <div className="app">
+            <div className='app'>
                 <h1>Temperature data</h1>
                 <h2>Current</h2>
                 <Current/>

@@ -1,7 +1,7 @@
 'use strict';
 
-var dispatcher = require('./dispatcher');
-var EventEmitter = require('events').EventEmitter;
+import dispatcher from './dispatcher';
+import {EventEmitter} from 'events';
 
 var temperature = function () {
     var _data = [];
@@ -9,10 +9,10 @@ var temperature = function () {
 
     return {
         dispatcherIndex: dispatcher.register(_handle),
-        getAll: getAll,
-        getCurrent: getCurrent,
-        addChangeListener: addChangeListener,
-        removeChangeListener: removeChangeListener
+        getAll,
+        getCurrent,
+        addChangeListener,
+        removeChangeListener
     };
 
     function _handle(payload) {
@@ -45,4 +45,4 @@ var temperature = function () {
     }
 };
 
-module.exports = temperature();
+export default temperature();

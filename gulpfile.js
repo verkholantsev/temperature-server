@@ -7,8 +7,8 @@ var rename = require('gulp-rename');
 gulp.task('js', function () {
     gulp.src('./src/app.jsx')
         .pipe(browserify({
-            transform: ['reactify'],
-            extensions: ['.jsx']
+            transform: ['reactify', '6to5ify'],
+            extensions: ['.jsx', '.js']
         }))
         .pipe(rename('app.js'))
         .pipe(gulp.dest('./public/'));

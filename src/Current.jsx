@@ -3,50 +3,50 @@
 /* globals React */
 'use strict';
 
-var temperature = require('./temperature');
+import temperature from './temperature';
 
 function getState() {
     return {data: temperature.getCurrent()};
 }
 
 var Current = React.createClass({
-    componentDidMount: function () {
+    componentDidMount() {
         temperature.addChangeListener(this._onChange);
     },
 
-    componentWillUnmount: function () {
+    componentWillUnmount() {
         temperature.removeChangeListener(this._onChange);
     },
 
-    _onChange: function () {
+    _onChange() {
         this.setState(getState());
     },
 
-    getInitialState: function () {
+    getInitialState() {
         return getState();
     },
 
-    render: function () {
+    render() {
         var cols = {
             voltage: 'V',
             resistance: 'Ω',
             temperature: '°C'
         };
-        cols = Object.keys(cols).map(function (key) {
+        cols = Object.keys(cols).map((key) => {
             return (
-                <div className="current__value col col_count_3">
+                <div className='current__value col col_count_3'>
                     <span>{this.state.data[key]}</span>
                     <span>{cols[key]}</span>
                 </div>
             );
-        }, this);
+        });
 
         return (
-            <div className="current grid">
+            <div className='current grid'>
                 {cols}
             </div>
         );
     }
 });
 
-module.exports = Current;
+export default Current;

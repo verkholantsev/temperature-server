@@ -1,16 +1,14 @@
 'use strict';
 
-var Promise = require('vow').Promise;
+import {Promise} from 'vow';
 
 var dispatcher = function () {
     var _callbacks = [];
     var _promises = [];
 
-    var instance = {};
-
     return {
-        register: register,
-        dispatch: dispatch
+        register,
+        dispatch
     };
 
     function register(callback) {
@@ -22,23 +20,24 @@ var dispatcher = function () {
         var resolves = [];
         var rejects = [];
 
-        _promises = _callbacks.map(function(_, i) {
-            return new Promise(function(resolve, reject) {
+        _promises = _callbacks.map((_, i) => {
+            return new Promise((resolve, reject) => {
                 resolves[i] = resolve;
                 rejects[i] = reject;
             });
         });
 
-        _callbacks.forEach(function(callback, i) {
-            Promise.resolve(callback(payload)).then(function() {
-                resolves[i](payload);
-            }, function() {
-                rejects[i](new Error('Dispatcher callback unsuccessful'));
-            });
+        _callbacks.forEach((callback, i) => {
+            Promise.resolve(callback(payload))
+                .then(() => {
+                    resolves[i](payload);
+                }, () => {
+                    rejects[i](new Error('Dispatcher callback unsuccessful'));
+                });
         });
 
         _promises = [];
     }
 };
 
-module.exports = dispatcher();
+export default dispatcher();
