@@ -6,9 +6,9 @@ var socket = io();
 
 import Current from './Current';
 import All from './All';
-import dispatcher from './dispatcher';
+import {temperatureActions} from './temperatureActions';
 
-dispatcher.dispatch({action: 'update', data: data});
+temperatureActions.update(data);
 
 var App = React.createClass({
     render() {
@@ -30,5 +30,5 @@ var app = React.render(
 );
 
 socket.on('data', function (data) {
-    dispatcher.dispatch({action: 'update', data: data});
+    temperatureActions.update(data);
 });
