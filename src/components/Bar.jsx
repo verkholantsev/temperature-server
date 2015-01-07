@@ -7,14 +7,15 @@ import {actions as temperatureActions} from '../actions/temperatureActions';
 
 var Bar = React.createClass({
     render() {
+        var color =  `rgba(${this.props.current ? 255 : 0}, 0, 0, ${this.props.height} )`;
         var style = {
             height: this.props.height * 100,
-            backgroundColor: `rgba(0, 0, 0, ${this.props.height} )`
+            backgroundColor: color
         };
 
         return (
             <div
-                className='bar col col_count_10'
+                className='bar col col_count_100'
                 onMouseOver={this._onMouseOver}>
                     <div className='bar__wrapper'>
                         <div style={style} className='bar__content'></div>

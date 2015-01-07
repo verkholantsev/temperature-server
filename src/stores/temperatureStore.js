@@ -17,6 +17,7 @@ function temperatureStore() {
         dispatcherIndex: dispatcher.register(_handle),
         getAll,
         getCurrent,
+        getIndex,
         addChangeListener,
         removeChangeListener
     };
@@ -43,6 +44,10 @@ function temperatureStore() {
 
     function getCurrent() {
         return _data[_index];
+    }
+
+    function getIndex() {
+        return _index;
     }
 
     function addChangeListener(callback) {

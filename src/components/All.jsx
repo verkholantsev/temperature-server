@@ -7,7 +7,10 @@ import temperatureStore from '../stores/temperatureStore';
 import Bar from './Bar';
 
 function getState() {
-    return {data: temperatureStore.getAll()};
+    return {
+        data: temperatureStore.getAll(),
+        currentIndex: temperatureStore.getIndex()
+    };
 }
 
 var All = React.createClass({
@@ -29,8 +32,9 @@ var All = React.createClass({
 
     render() {
         var bars = this.state.data.map((element, index) => {
+            var current = this.state.currentIndex === index;
             return (
-                <Bar index={index} key={index} height={element.barHeight}/>
+                <Bar index={index} current={current} key={index} height={element.barHeight}/>
             );
         });
 

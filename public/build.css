@@ -12,17 +12,17 @@
     float: left;
 }
 
-.col_count_3 {
-    width: 33%;
+.col_count_4 {
+    width: 25%;
 }
 
-.col_count_10 {
+.col_count_100 {
     width: 1%;
 }
 
 .current__value {
     text-align: center;
-    font-size: 64pt;
+    font-size: 32pt;
 }
 
 .bar__wrapper {

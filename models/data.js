@@ -13,6 +13,7 @@ module.exports = function (rawData) {
             temperature: element.temperature,
             voltage: element.voltage,
             resistance: element.resistance,
+            timestamp: element.timestamp,
             barHeight: (element.temperature - minTemperature) / (maxTemperature - minTemperature)
         };
     });
