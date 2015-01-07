@@ -3,7 +3,8 @@
 import dispatcher from '../dispatcher/dispatcher';
 
 export var types = {
-    update: 'update'
+    update: 'update',
+    setCurrentIndex: 'setCurrentIndex'
 };
 
 export var actions = {
@@ -11,6 +12,13 @@ export var actions = {
         dispatcher.dispatch({
             type: types.update,
             data: data
+        });
+    },
+
+    setCurrentIndex(index) {
+        dispatcher.dispatch({
+            type: types.setCurrentIndex,
+            index: index
         });
     }
 };

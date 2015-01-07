@@ -10,6 +10,7 @@ export default temperatureStore();
 
 function temperatureStore() {
     var _data = [];
+    var _index = 0;
     var emitter = new EventEmitter();
 
     return {
@@ -26,6 +27,9 @@ function temperatureStore() {
         if (type === types.update) {
             _data = payload.data;
             _emitChange();
+        } else if (type === types.setCurrentIndex) {
+            _index = payload.index;
+            _emitChange();
         }
     }
 
@@ -38,7 +42,7 @@ function temperatureStore() {
     }
 
     function getCurrent() {
-        return _data[0];
+        return _data[_index];
     }
 
     function addChangeListener(callback) {

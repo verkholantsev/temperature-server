@@ -4,6 +4,7 @@
 'use strict';
 
 import temperatureStore from '../stores/temperatureStore';
+import Bar from './Bar';
 
 function getState() {
     return {data: temperatureStore.getAll()};
@@ -27,24 +28,9 @@ var All = React.createClass({
     },
 
     render() {
-        var bars = this.state.data.map((element) => {
-            var style = {
-                height: element.barHeight * 100,
-                backgroundColor: `rgba(0, 0, 0, ${element.barHeight} )`
-            };
-
+        var bars = this.state.data.map((element, index) => {
             return (
-                <div className='all__value col col_count_10'>
-                    <div className='bar'>
-                        <div style={style} className='bar__content'>
-                        </div>
-                        <div className='bar__data'>
-                            <div>{element.voltage}V</div>
-                            <div>{element.resistance}Ω</div>
-                            <div>{element.temperature}°C</div>
-                        </div>
-                    </div>
-                </div>
+                <Bar index={index} key={index} height={element.barHeight}/>
             );
         });
 

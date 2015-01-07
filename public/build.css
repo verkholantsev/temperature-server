@@ -25,33 +25,14 @@
     font-size: 64pt;
 }
 
-.all__value {
-    line-height: 24pt;
-    font-size: 18pt;
-    text-align: center;
-}
-
-.bar {
+.bar__wrapper {
     height: 100px;
     position: relative;
 }
 
 .bar__content {
     position: absolute;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    margin: 0 0px;
-}
-
-.bar__data {
-    position: absolute;
-    top: 100%;
-    width: 300%;
-
-    display: none;
-}
-
-.bar:hover .bar__data {
-    display: block;
 }
