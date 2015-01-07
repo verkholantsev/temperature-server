@@ -2,13 +2,8 @@
 
 /* globals React */
 
-var socket = io();
-
 import Current from './Current';
 import All from './All';
-import {temperatureActions} from './temperatureActions';
-
-temperatureActions.update(data);
 
 var App = React.createClass({
     render() {
@@ -24,11 +19,4 @@ var App = React.createClass({
     }
 });
 
-var app = React.render(
-    <App/>,
-    document.body
-);
-
-socket.on('data', function (data) {
-    temperatureActions.update(data);
-});
+export default App;

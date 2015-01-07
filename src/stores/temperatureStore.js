@@ -1,9 +1,14 @@
 'use strict';
 
-import dispatcher from './dispatcher';
-import {EventEmitter} from 'events';
+const CHANGE_EVENT = 'change';
 
-var temperature = function () {
+import {EventEmitter} from 'events';
+import dispatcher from '../dispatcher/dispatcher';
+import {types} from '../actions/temperatureActions';
+
+export default temperatureStore();
+
+function temperatureStore() {
     var _data = [];
     var emitter = new EventEmitter();
 
@@ -16,16 +21,16 @@ var temperature = function () {
     };
 
     function _handle(payload) {
-        var action = payload.action;
+        var type = payload.type;
 
-        if (action === 'update') {
+        if (type === types.update) {
             _data = payload.data;
             _emitChange();
         }
     }
 
     function _emitChange() {
-        emitter.emit('change');
+        emitter.emit(CHANGE_EVENT);
     }
 
     function getAll() {
@@ -37,12 +42,10 @@ var temperature = function () {
     }
 
     function addChangeListener(callback) {
-        return emitter.on('change', callback);
+        return emitter.on(CHANGE_EVENT, callback);
     }
 
     function removeChangeListener(callback) {
-        return emitter.removeListener('change', callback);
+        return emitter.removeListener(CHANGE_EVENT, callback);
     }
-};
-
-export default temperature();
+}

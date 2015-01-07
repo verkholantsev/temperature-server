@@ -3,19 +3,19 @@
 /* globals React */
 'use strict';
 
-import temperature from './temperature';
+import temperatureStore from '../stores/temperatureStore';
 
 function getState() {
-    return {data: temperature.getAll()};
+    return {data: temperatureStore.getAll()};
 }
 
 var All = React.createClass({
     componentDidMount() {
-        temperature.addChangeListener(this._onChange);
+        temperatureStore.addChangeListener(this._onChange);
     },
 
     componentWillUnmount() {
-        temperature.removeChangeListener(this._onChange);
+        temperatureStore.removeChangeListener(this._onChange);
     },
 
     _onChange() {
