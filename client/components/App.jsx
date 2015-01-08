@@ -1,7 +1,8 @@
 /** @jsx React.DOM */
 
-/* globals React */
+'use strict';
 
+import React from 'react';
 import Current from './Current';
 import All from './All';
 

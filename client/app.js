@@ -1,7 +1,10 @@
-/* globals React */
+'use strict';
+
+/* globals io, data, document */
 
 var socket = io();
 
+import React from 'react';
 import {actions as temperatureActions} from './actions/temperatureActions';
 import App from './components/App';
 

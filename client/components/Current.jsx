@@ -1,8 +1,8 @@
 /** @jsx React.DOM */
 
-/* globals React */
 'use strict';
 
+import React from 'react';
 import temperatureStore from '../stores/temperatureStore';
 import moment from 'moment';
 
@@ -34,14 +34,14 @@ var Current = React.createClass({
             temperature: '°C',
             timestamp: ''
         };
-        cols = Object.keys(cols).map((key) => {
+        cols = Object.keys(cols).map(key => {
             var value = this.state.data[key];
             if (key === 'timestamp') {
                 value = moment(value).format('HH:mm DD.MM.YY');
             }
 
             return (
-                <div className='current__value col col_count_4'>
+                <div key={key} className='current__value col col_count_4'>
                     <span>{value}</span>
                     <span>{cols[key]}</span>
                 </div>

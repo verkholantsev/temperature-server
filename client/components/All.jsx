@@ -1,8 +1,8 @@
 /** @jsx React.DOM */
 
-/* globals React */
 'use strict';
 
+import React from 'react';
 import temperatureStore from '../stores/temperatureStore';
 import Bar from './Bar';
 

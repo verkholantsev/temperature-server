@@ -1,8 +1,8 @@
 /** @jsx React.DOM */
 
-/* globals React */
 'use strict';
 
+import React from 'react';
 import {actions as temperatureActions} from '../actions/temperatureActions';
 
 var Bar = React.createClass({
